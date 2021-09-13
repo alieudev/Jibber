@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	wrap_parameters format: []
+	skip_before_action :authorize, only: [:auth_show, :create]
 
 	#GET /users/
 	def index 
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     if user
       render json: user, status: :created
     else
-      render json: { errors: ["Not authorized"] }, status: :unauthorized
+      render json: { errors: "Not authorized" }, status: :unauthorized
     end	
 	end
 
@@ -35,12 +36,13 @@ class UsersController < ApplicationController
 
 	#PATCH /users/:id
 	def update
-	  user = User.find_by(id: session[:user_id])
+
+		user = User.find_by(id: session[:user_id])
     if user
 			user.update!(user_params)
 			render json: user, status: :accepted
 		else
-      render json: { errors: ["Not authorized"] }, status: :unauthorized
+      render json: { errors: "Not authorized" }, status: :unauthorized
     end				
 	end
 
@@ -50,13 +52,13 @@ class UsersController < ApplicationController
 		if user
 			user.destroy
 			head :no_content
-    end
+    	end
 	end 
 		
 	private
 
 	def find_user
-    user = User.find_by!(id: params(:id))
+    user = User.find(params[:id])
   end 
 
 	def user_params
