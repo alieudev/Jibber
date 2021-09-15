@@ -1,15 +1,69 @@
+import { useState } from 'react'
+import EditForm from './EditForm'
+
+function PostDisplay({ post, user }) {
+	const [editClicked, setEditClicked] = useState(false)
+	const [errors, setErrors] = useState([])
+	const [renderPost, setRenderPost] = useState(post)
+
+	function handleDelete(e) {
+    e.preventDefault()
+		fetch(`/posts/${post.id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.errors) setErrors(data.errors);
+        // .catch({error: 'Not authorizd'})
+      });
+	}
 
 
-function PostDisplay({ post }) {
+	function editButtonClick() {
+		setEditClicked(!editClicked)
+	}
+	
+	function updatePost(data) {
+		setRenderPost(data)
+	}
+
+	const msec = Date.parse(renderPost.created_at)
+	const renderDate = new Date(msec).toDateString()
 
 	return (
-		<div style={{paddingBottom: 20}} >
-			<p><b>{post.user.name}</b></p>
-			<p>@{post.user.handle}</p>
-			<p>{post.content}</p>
-			<div><em>{post.updated_at}</em></div>
-		</div>
-	)
+    <div style={{ paddingBottom: 20 }}>
+		<aside className = "avatar-aside">
+      <img className='post-avatar' src={renderPost.user.image} alt={renderPost.user.name}/>
+    </aside>
+		<main>
+			<p>
+				<b>{renderPost.user.name}</b>
+			</p>
+			<p>@{renderPost.user.handle}</p>
+			<p>{renderPost.content}</p>
+			<div>
+				<em>{renderDate}</em>
+			</div>
+    </main>
+
+		
+	  
+      {renderPost.user.id === user.id ? (
+        <>
+          <button onClick={editButtonClick}>Edit</button>
+          <button onClick={handleDelete}>Delete</button>
+          {errors ? errors.map((e) => <div>{e}</div>) : null}
+          {editClicked ? (
+            <EditForm
+              post={renderPost}
+              updatePost={updatePost}
+              setEditClicked={setEditClicked}
+            />
+          ) : null}
+        </>
+      ) : null}
+    </div>
+  );
 }
 
 export default PostDisplay

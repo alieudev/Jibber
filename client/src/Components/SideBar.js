@@ -1,20 +1,12 @@
 import React from "react";
-import {useState, useEffect } from 'react'
 
-function SideBar(){
-    const [data, setData] = useState('')    
-
-    useEffect(() => {
-       fetch('/sidebarinfo')
-       .then((res) => res.json())
-       .then(data => console.log(data))
-    }, [])
-
+function SideBar({user}){   
     return(<>
-    {/* <h1>{data.name}</h1>
-    <h2>{data.handle}</h2>
-    <img src={data.src} alt={data.name}/> */}
-    
+    <h1>{user.name}</h1>
+    <h2>@{user.handle}</h2>
+    <img src={user.image} alt={user.name}/>
+    <p>{user.bio}</p>
+    <h2>{user.created_at}</h2>
     </>)
 }
 

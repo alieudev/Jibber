@@ -22,11 +22,7 @@ class SessionsController < ApplicationController
 		end
   end
 
-  #Get /users/:id
-  def show 
-	user = User.find_by(handle: params[:handle])
-	render json: user, status: :ok
-  end
+ 
 
 
 end

@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from "react"
 import PostsList from "./PostsList"
 
-function PostsContainer() {
+function PostsContainer({ user }) {
   const [posts, setPosts] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -17,17 +17,17 @@ function PostsContainer() {
   }, [])
 
 	return (
-		<Fragment>
-			{isLoaded && posts.length > 0 ?
-      <div>
-        <h1>Posts</h1>
-        <PostsList posts={posts} />
-      </div>
-			:
-      <h1>Loading...</h1>
-			}
-		</Fragment>
-	)
+    <Fragment>
+      {isLoaded && posts.length > 0 ? (
+        <div>
+          <h1>Posts</h1>
+          <PostsList posts={posts} user={user} />
+        </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </Fragment>
+  );
 }
 
 export default PostsContainer
