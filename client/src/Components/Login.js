@@ -3,7 +3,6 @@ import { useState } from "react"
 function Login({ onLogin }) {
   const [name, setName] = useState("");
 	const [password, setPassword] = useState("")
-	const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,8 +13,7 @@ function Login({ onLogin }) {
       },
       body: JSON.stringify({ 
 				name,
-				password,
-				passwordConfirmation 
+				password
 			}),
     })
       .then((r) => r.json())
@@ -36,13 +34,6 @@ function Login({ onLogin }) {
         value={password}
 				placeholder={"password"}
         onChange={(e) => setPassword(e.target.value)}
-      />
-			<br />
-      <input
-        type="text"
-        value={passwordConfirmation}
-				placeholder={"confirm password"}
-        onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
 			<br />
 			<button type="submit">Login</button>
