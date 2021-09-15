@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 	# POST /login/
   def create
-		user = User.find_by(name: params[:name])
+		user = User.find_by(handle: params[:handle])
 		if user&.authenticate(params[:password])
 			session[:user_id] = user.id
 			render json: user, status: :created

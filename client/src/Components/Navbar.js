@@ -11,7 +11,9 @@ function Navbar({ onLogout, user }) {
   return (
     <header>
 			<h1>Jibber</h1>
+      {/* <p>{user.handle}</p> */}
 			<Fragment>
+        <span style={{'margin-right':15}}>Welcome, @{user.handle}</span>
 				{ user ? 
 					<button onClick={handleLogout}>Logout</button>
 				:
