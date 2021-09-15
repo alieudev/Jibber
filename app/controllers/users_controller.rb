@@ -2,13 +2,13 @@ class UsersController < ApplicationController
 	wrap_parameters format: []
 	skip_before_action :authorize, only: [:auth_show, :create]
 
-	#GET /users/
+	# GET /users/
 	def index 
         users = User.all
         render json: users, status: :ok
 	end 
     
-	#GET /users/:id
+	# GET /users/:id
 	def show 
         user = find_user
         render json: user, status: :ok
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end	
 	end
 
-	#POST /signup/
+	# POST /signup/
 	def create
 		user = User.create!(user_params)
 		session[:user_id] = user.id
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 		# end
 	end
 
-	#PATCH /users/:id
+	# PATCH /users/:id
 	def update
 
 		user = User.find_by(id: session[:user_id])
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   end 
 
 	def user_params
-		params.permit(:name, :password, :password_confirmation, :email, :handle, :bio, :image)
+		params.permit(:name, :password, :email, :handle, :bio, :image)
 	end
 
 end
