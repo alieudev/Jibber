@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
 
 	# POST /login/
   def create
-		user = User.find_by(name: params[:name])
+		user = User.find_by(handle: params[:handle])
 		if user&.authenticate(params[:password])
 			session[:user_id] = user.id
 			render json: user, status: :created
 		else
-      render json: {errors: "Invalid username and/or password"}
+      render json: {errors: ["Invalid username and/or password"]}
 		end      
   end
     
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 			session.delete :user_id
 			head :no_content
 		else
-			render json: { errors: "You must login before you can logout"}
+			render json: { errors: ["You must login before you can logout"]}
 		end
   end
 
