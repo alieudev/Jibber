@@ -4,6 +4,7 @@ import { useState, useEffect, Fragment } from "react"
 import LoginContainer from './Components/LoginContainer'
 import PostsContainer from "./Components/PostsContainer"
 import Navbar from "./Components/Navbar"
+import SideBar from "./Components/SideBar"
 
 function App() {
   // const [posts, setPosts] = useState(false)
@@ -35,6 +36,7 @@ function App() {
         <div>
           <h1>PLACEHOLDER FOR WHEN A USER IS LOGGED IN</h1>
           <PostsContainer />
+          <SideBar></SideBar>
           {/* <Switch> 
           </Switch> */}
         </div>
@@ -42,6 +44,7 @@ function App() {
         <LoginContainer onLogin={onLogin} />
       }
     </Fragment>
+  
   );
 }
 
