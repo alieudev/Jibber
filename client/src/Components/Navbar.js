@@ -11,11 +11,12 @@ function Navbar({ onLogout, user }) {
   return (
     <header>
 			<h1>Jibber</h1>
-      {/* <p>{user.handle}</p> */}
 			<Fragment>
-        <span style={{'margin-right':15}}>Welcome, @{user.handle}</span>
 				{ user ? 
-					<button onClick={handleLogout}>Logout</button>
+					<Fragment>
+						<span style={{'margin-right':15}}>Welcome, @{user.handle}</span>
+						<button onClick={handleLogout}>Logout</button>
+					</Fragment>
 				:
 					<span>Not Logged In</span> //<button>Login</button> MAKE THIS BUTTON A LINK TO LOGIN??
 				}
