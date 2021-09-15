@@ -14,7 +14,7 @@ function Navbar({ onLogout, user }) {
 			<Fragment>
 				{ user ? 
 					<Fragment>
-						<span style={{'padding-right':15}}>Welcome, @{user.handle}</span>
+						<span style={{'paddingRight':15}}>Welcome, @{user.handle}</span>
 						<button onClick={handleLogout}>Logout</button>
 					</Fragment>
 				:
