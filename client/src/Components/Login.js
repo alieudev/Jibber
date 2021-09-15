@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function Login({ onLogin }) {
-  const [name, setName] = useState("");
+  const [handle, setHandle] = useState("");
 	const [password, setPassword] = useState("")
 
   function handleSubmit(e) {
@@ -12,7 +12,7 @@ function Login({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ 
-				name,
+				handle,
 				password
 			}),
     })
@@ -24,9 +24,9 @@ function Login({ onLogin }) {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        value={name}
-				placeholder={"name"}
-        onChange={(e) => setName(e.target.value)}
+        value={handle}
+				placeholder={"handle"}
+        onChange={(e) => setHandle(e.target.value)}
       />
 			<br />
       <input

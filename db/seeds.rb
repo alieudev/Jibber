@@ -1,4 +1,5 @@
 require 'faker'
+require 'bcrypt'
 
 10.times do
 	name = Faker::Name.unique.name
@@ -7,7 +8,7 @@ require 'faker'
 	image = Faker::Avatar.image
 	bio = Faker::Lorem.paragraph
 	password_digest = ""
-	User.create!(name: name, handle: handle, email: email, image: image, bio: bio, password_digest: password_digest)
+	User.create!(name: name, handle: handle, email: email, image: image, bio: bio, password_digest: BCrypt::Password.create('password'))
 end
 
 40.times do

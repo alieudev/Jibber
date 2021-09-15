@@ -2,6 +2,7 @@ import { useState } from "react"
 
 function Signup({ onLogin }) {
   const [name, setName] = useState("");
+  const [handle, setHandle] = useState("");
 	const [password, setPassword] = useState("")
 
   function handleSubmit(e) {
@@ -11,8 +12,9 @@ function Signup({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
-				name,
+      body: JSON.stringify({
+        name, 
+				handle,
 				password
 			}),
     })
@@ -27,6 +29,13 @@ function Signup({ onLogin }) {
         value={name}
 				placeholder={"name"}
         onChange={(e) => setName(e.target.value)}
+      />
+      <br />
+      <input
+        type="text"
+        value={handle}
+				placeholder={"handle"}
+        onChange={(e) => setHandle(e.target.value)}
       />
 			<br />
       <input
