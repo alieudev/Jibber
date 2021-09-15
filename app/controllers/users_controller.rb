@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if user
       render json: user, status: :created
     else
-      render json: { errors: "Not authorized" }, status: :unauthorized
+      render json: { errors: ["Not authorized"] }, status: :unauthorized
     end	
 	end
 
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 			user.update!(user_params)
 			render json: user, status: :accepted
 		else
-      render json: { errors: "Not authorized" }, status: :unauthorized
+      render json: { errors: ["Not authorized"] }, status: :unauthorized
     end				
 	end
 

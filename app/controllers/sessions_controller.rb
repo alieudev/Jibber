@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 			session[:user_id] = user.id
 			render json: user, status: :created
 		else
-      render json: {errors: "Invalid username and/or password"}
+      render json: {errors: ["Invalid username and/or password"]}
 		end      
   end
     
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 			session.delete :user_id
 			head :no_content
 		else
-			render json: { errors: "You must login before you can logout"}
+			render json: { errors: ["You must login before you can logout"]}
 		end
   end
 
