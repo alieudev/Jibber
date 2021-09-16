@@ -3,7 +3,7 @@ import PostsList from "./PostsList"
 import NewJibForm from "./NewJibForm"
 
 function PostsContainer({ user }) {
-  const [posts, setPosts] = useState('')
+  const [posts, setPosts] = useState([])
   const [isClicked, setIsClicked] = useState(false);
 
 	useEffect(() => {
@@ -15,7 +15,11 @@ function PostsContainer({ user }) {
   },[])
 
   const onAddPost = (data) => setPosts([data, ...posts])
- 
+
+  const onDeletePost = (data) => {
+    let filteredPosts = posts.filter(post => post.id !== data)
+    setPosts(filteredPosts)
+  }
 	
   return (
     <Fragment>
@@ -30,7 +34,7 @@ function PostsContainer({ user }) {
           />
          ) : null}
         <h1>Posts</h1>
-        <PostsList posts={posts} user={user} />
+        <PostsList posts={posts} user={user} onDeletePost={onDeletePost} />
       </div>
       ) : (<h1>Loading...</h1>)}
     </Fragment>
