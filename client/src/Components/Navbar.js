@@ -9,9 +9,9 @@ function Navbar({ onLogout, user }) {
   }
 
   return (
-    <header style={{backgroundColor: "Gainsboro"}} >
-			<h1>Jibber</h1>
+    <header style={{ backgroundColor: "Gainsboro", 'paddingTop':15, 'paddingBottom':15 }} >
 			<Fragment>
+				<span style={{ 'paddingRight':15, fontSize:30 }} ><b>Jibber</b></span>
 				{ user ? 
 					<Fragment>
 						<span style={{'paddingRight':15}}>Welcome, @{user.handle}</span>
