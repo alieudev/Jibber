@@ -32,10 +32,8 @@ function PostDisplay({ post, user, onDeletePost }) {
 
 	return (
     <div style={{ paddingBottom: 20 }}>
-      <aside className = "avatar-aside">
         <img className='post-avatar' src={renderPost.user.image} alt={renderPost.user.name}/>
-      </aside>
-      <main>
+      <main style={{ marginLeft: 70 }} >
         <p>
           <b>{renderPost.user.name}</b>
         </p>
