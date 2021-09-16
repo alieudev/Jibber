@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import EditForm from './EditForm'
 
 function PostDisplay({ post, user, onDeletePost }) {
@@ -37,7 +38,7 @@ function PostDisplay({ post, user, onDeletePost }) {
         <p>
           <b>{renderPost.user.name}</b>
         </p>
-        <p>@{renderPost.user.handle}</p>
+        <p><Link to={`/users/${user.id}`}>@{renderPost.user.handle}</Link></p>
         <p>{renderPost.content}</p>
         <div>
           <em>{renderDate}</em>
