@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react"
-import Login from './Login'
+import LoginForm from './LoginForm'
 import Signup from './Signup'
 
 
@@ -14,7 +14,7 @@ function LoginContainer({ onLogin }) {
 		<Fragment>
 			{ hasAccount ? 
 				<div>
-					<Login onLogin={onLogin} />
+					<LoginForm onHandleClick={handleClick} onLogin={onLogin} />
 					<div>or</div>
 					<button onClick={handleClick} >Signup for a New Account</button>
 				</div>

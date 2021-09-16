@@ -23,14 +23,15 @@ function PostsContainer({ user }) {
 	
   return (
     <Fragment>
-      { posts.length > 0 ? (
-      <div>
+      { posts.length > 0 ? (<div>
+        <NewJibForm
+        user={user}
+        onAddPost={onAddPost}
+        setIsClicked={setIsClicked}
+      />
+      <br></br>
+      <br></br>
         <div className="postDiv" >
-          <NewJibForm
-            user={user}
-            onAddPost={onAddPost}
-            setIsClicked={setIsClicked}
-          />
         </div>
         <PostsList posts={posts} user={user} onDeletePost={onDeletePost} />
       </div>

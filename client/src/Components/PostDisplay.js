@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import EditForm from './EditForm'
+import { Button } from 'semantic-ui-react'
 
 function PostDisplay({ post, user, onDeletePost }) {
 	const [editClicked, setEditClicked] = useState(false)
@@ -49,8 +50,8 @@ function PostDisplay({ post, user, onDeletePost }) {
 	  
       {renderPost.user.id === user.id ? (
         <>
-          <button onClick={editButtonClick}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <Button basic color='blue' style={{'marginLeft': 70}}onClick={editButtonClick}>Edit</Button>
+          <Button basic color='red' onClick={handleDelete}>Delete</Button>
           {errors ? errors.map((e) => <div>{e}</div>) : null}
           {editClicked && !errors ? (
             <EditForm

@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar"
 import SideBar from "./Components/SideBar"
 import UserDisplay from './Components/UserDisplay'
 import LinkUserData from './Components/LinkUserData'
+import Signup from "./Components/Signup";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -54,6 +55,9 @@ function App() {
               <Route exact path="/users/:id">
                <UserDisplay users={fetchUsers} />
               </Route>
+              {/* <Route exact path="/signup">
+                <Signup/>
+              </Route> */}
             </Switch>
           </main>
         </Fragment>
