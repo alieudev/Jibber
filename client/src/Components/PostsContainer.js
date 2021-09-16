@@ -25,15 +25,13 @@ function PostsContainer({ user }) {
     <Fragment>
       { posts.length > 0 ? (
       <div>
-        <button onClick={()=> setIsClicked(!isClicked)}>New Jib</button>
-        {isClicked ? (
+        <div className="postDiv" >
           <NewJibForm
             user={user}
             onAddPost={onAddPost}
             setIsClicked={setIsClicked}
           />
-         ) : null}
-        <h1>Posts</h1>
+        </div>
         <PostsList posts={posts} user={user} onDeletePost={onDeletePost} />
       </div>
       ) : (<h1>Loading...</h1>)}

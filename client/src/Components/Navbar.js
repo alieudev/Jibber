@@ -12,6 +12,7 @@ function Navbar({ onLogout, user }) {
     <header style={{ backgroundColor: "Gainsboro", 'paddingTop':15, 'paddingBottom':15 }} >
 			<Fragment>
 				<span style={{ 'paddingRight':15, fontSize:30 }} ><b>Jibber</b></span>
+				{/* <img src="https://www.clipartmax.com/png/small/311-3112098_rofl-the-jabbering-jibberling-jumping-rofl-the-jabbering-jibberling-jumping.png" alt="Rofl The Jabbering Jibberling Jumping - Rofl The Jabbering Jibberling Jumping @clipartmax.com"> */}
 				{ user ? 
 					<Fragment>
 						<span style={{'paddingRight':15}}>Welcome, @{user.handle}</span>

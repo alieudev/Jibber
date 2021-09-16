@@ -1,4 +1,11 @@
 import {useState} from 'react'
+import { Form, TextArea } from 'semantic-ui-react'
+
+const TextAreaExampleTextArea = () => (
+  <Form>
+    <TextArea placeholder='Tell us more' />
+  </Form>
+)
 
 function NewJibForm({ user, onAddPost, setIsClicked }) {
     const [content, setContent] = useState("");
@@ -29,7 +36,7 @@ function NewJibForm({ user, onAddPost, setIsClicked }) {
     
     return (
         <>
-        <form onSubmit={submitJib}>
+        {/* <form onSubmit={submitJib}>
           <label>
             Create new jib:
             <input
@@ -40,7 +47,10 @@ function NewJibForm({ user, onAddPost, setIsClicked }) {
             />
           </label>
           <input type="submit" value="Submit" />
-        </form>
+        </form> */}
+        <Form onSubmit={submitJib}>
+          <TextArea placeholder="What's happenning?" />
+        </Form>
       </>
     )
 }
