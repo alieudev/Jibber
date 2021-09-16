@@ -9,7 +9,7 @@ function Navbar({ onLogout, user }) {
   }
 
   return (
-    <header>
+    <header style={{backgroundColor: "Gainsboro"}} >
 			<h1>Jibber</h1>
 			<Fragment>
 				{ user ? 

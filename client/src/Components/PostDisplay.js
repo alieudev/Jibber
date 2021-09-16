@@ -29,7 +29,9 @@ function PostDisplay({ post, user, onDeletePost }) {
 	}
 
 	const msec = Date.parse(renderPost.created_at)
-	const renderDate = new Date(msec).toDateString()
+  const parseDate = new Date(msec).toDateString()
+  const splitDate = parseDate.split(" ")
+  const renderDate = `${splitDate[0]}, ${splitDate[1]} ${splitDate[2]}, ${splitDate[3]}`
 
 	return (
     <div style={{ paddingBottom: 20 }}>

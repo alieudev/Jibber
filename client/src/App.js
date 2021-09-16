@@ -40,7 +40,6 @@ function App() {
       <Navbar onLogout={onLogout} user={user} />
       {user && fetchUsers ? (
         <Fragment>
-          <h1>PLACEHOLDER FOR WHEN A USER IS LOGGED IN</h1>
           <aside>
             <SideBar user={user}></SideBar>
           </aside>
