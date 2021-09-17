@@ -65,6 +65,8 @@ function App() {
     setUser(data)
   }
 
+  console.log(user)
+
   return (
     <Fragment>
       <Navbar onLogout={onLogout} user={user} />

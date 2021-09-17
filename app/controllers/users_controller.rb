@@ -36,10 +36,9 @@ class UsersController < ApplicationController
 
 	# PATCH /users/:id
 	def update
-
 		user = User.find_by(id: session[:user_id])
     if user
-			user.update!(user_params)
+			user.update!(bio: params[:bio], image: params[:image])
 			render json: user, status: :accepted
 		else
       render json: { errors: ["Not authorized"] }, status: :unauthorized
