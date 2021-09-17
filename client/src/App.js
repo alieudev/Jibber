@@ -47,6 +47,7 @@ function App() {
     setUser(null)
   }
 
+<<<<<<< Updated upstream
   function appOnDeletePost(data) {
     let newArr = posts.filter(post => post.id !== data)
     setPosts(newArr)
@@ -62,6 +63,9 @@ function App() {
   }
 
   function updateUser(data) {
+=======
+  function onUpdateUser(data){
+>>>>>>> Stashed changes
     setUser(data)
   }
 
@@ -71,7 +75,11 @@ function App() {
       {user && fetchUsers ? (
         <div className="main-div" >
           <aside>
+<<<<<<< Updated upstream
             <SideBar user={user} updateUser={updateUser} ></SideBar>
+=======
+            <SideBar user={user} onUpdateUser={onUpdateUser}></SideBar>
+>>>>>>> Stashed changes
           </aside>
           <main>
             <Switch>
