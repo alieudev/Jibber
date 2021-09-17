@@ -13,15 +13,15 @@ function LoginContainer({ onLogin }) {
 	return (
 		<Fragment>
 			{ hasAccount ? 
-				<div>
+				<div style={{ padding: 15 }} >
 					<LoginForm onHandleClick={handleClick} onLogin={onLogin} />
-					<div>or</div>
+					<div style={{ paddingTop: 10, paddingBottom: 10 }} >or</div>
 					<button onClick={handleClick} >Signup for a New Account</button>
 				</div>
 			:
-				<div>
+				<div style={{ padding: 15 }} >
 					<Signup onLogin={onLogin} />
-					<div>or</div>
+					<div style={{ paddingTop: 10, paddingBottom: 10 }} >or</div>
 					<button onClick={handleClick} >Login</button>
 				</div>
 			}

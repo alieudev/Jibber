@@ -2,7 +2,7 @@ import { useState } from "react"
 import PostDisplay from "./PostDisplay"
 import NewJibForm from "./NewJibForm"
 
-function PostsList({ posts, user, appOnDeletePost, appOnAddPost, appOnEditPost }) {
+function PostsList({ posts, user, appOnDeletePost, appOnAddPost, appOnEditPost, otherUser }) {
 	const [listPosts, setListPosts] = useState(posts)
 
 	function onAddPost(data) {
@@ -22,15 +22,18 @@ function PostsList({ posts, user, appOnDeletePost, appOnAddPost, appOnEditPost }
 
 	return (
 		<div>
-			        <div className='p-container' >
-          <div className='form-div' >
+			{user.id === otherUser.id ?
+				<div className='p-container' >
+        	<div className='form-div' >
             <NewJibForm
               user={user}
               onAddPost={onAddPost}
             />
           </div>
         </div>
-
+			:
+				null
+			}
 			{renderPosts}
 		</div>
 	)

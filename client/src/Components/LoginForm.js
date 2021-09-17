@@ -1,8 +1,8 @@
-import { useState, Fragment} from "react"
-import { Link, Redirect } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { useState} from "react"
+// import { Link, Redirect } from 'react-router-dom'
+// import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
-function LoginForm ({ onLogin, onHandleClick }){
+function LoginForm ({ onLogin }){
 	const [handle, setHandle] = useState("");
 	const [password, setPassword] = useState("");
   	const [errors, setErrors] = useState([]);
@@ -81,27 +81,27 @@ function LoginForm ({ onLogin, onHandleClick }){
 // 			});  }
 
   return (
-		<Fragment>
-			{errors?errors.map(e => <div>{e}</div>):null}
+		<div>
+			{errors?errors.map(e => <div style={{ color: "red" }} >{e}</div>):null}
 			{/* {errors?<div>{errors}</div>:null} */}
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} >
 				<input
 					type="text"
 					value={handle}
 					placeholder={"handle"}
 					onChange={(e) => setHandle(e.target.value)}
 				/>
-				<br />
+        <div style={{ paddingTop: 10 }} />
 				<input
 					type="text"
 					value={password}
 					placeholder={"password"}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<br />
+        <div style={{ paddingTop: 10 }} />
 				<button type="submit">Login</button>
 			</form>
-		</Fragment>
+		</div>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react"
+import { useState } from "react"
 
 function Signup({ onLogin }) {
   const [name, setName] = useState("");
@@ -27,9 +27,8 @@ function Signup({ onLogin }) {
   }
 
 	return (
-		<Fragment>
-			{errors?errors.map(e => <div>{e}</div>):null}
-			{/* {errors?<div>{errors}</div>:null} */}
+		<div>
+			{errors?errors.map(e => <div style={{ color: "red" }} >{e}</div>):null}
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -37,24 +36,24 @@ function Signup({ onLogin }) {
 					placeholder={"name"}
 					onChange={(e) => setName(e.target.value)}
 				/>
-				<br />
+        <div style={{ paddingTop: 10 }} />
 				<input
 					type="text"
 					value={handle}
 					placeholder={"handle"}
 					onChange={(e) => setHandle(e.target.value)}
 				/>
-				<br />
+        <div style={{ paddingTop: 10 }} />
 				<input
 					type="text"
 					value={password}
 					placeholder={"password"}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<br />
+        <div style={{ paddingTop: 10 }} />
 				<button type="submit">Signup</button>
 			</form>
-		</Fragment>
+		</div>
   );
 }
 

@@ -22,7 +22,7 @@ function UserDisplay({ users, user, posts, appOnDeletePost, appOnAddPost, appOnE
         <p><b>Bio: </b>{filteredUser.bio}</p>
         <p><b>Member since: </b>{renderDate}</p>
         <h2>Posts</h2>
-        <PostsList posts={userPosts} user={user} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
+        <PostsList posts={userPosts} user={user} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} otherUser={filteredUser} />
       </div>
     </div>
   );
