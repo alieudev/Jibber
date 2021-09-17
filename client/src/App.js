@@ -56,13 +56,17 @@ function App() {
     setPosts([data, ...posts])
   }
 
+  function updateUser(data) {
+    setUser(data)
+  }
+
   return (
     <Fragment>
       <Navbar onLogout={onLogout} user={user} />
       {user && fetchUsers ? (
         <div className="main-div" >
           <aside>
-            <SideBar user={user}></SideBar>
+            <SideBar user={user} updateUser={updateUser} ></SideBar>
           </aside>
           <main>
             <Switch>
