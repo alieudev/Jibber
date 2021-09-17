@@ -7,13 +7,14 @@ function SideBar({user}){
     const splitDate = trimDate.split(" ")
     const renderDate = `${splitDate[0]} ${splitDate[1]}, ${splitDate[2]}`
 
-    return(<>
-    <h1>{user.name}</h1>
-    <h2>@{user.handle}</h2>
-    <img src={user.image} alt={user.name}/>
-    <p>{user.bio}</p>
-    <h2>{renderDate}</h2>
-    </>)
+    return(
+    <div className="main-div" >
+        <h1>{user.name}</h1>
+        <h2>@{user.handle}</h2>
+        <img src={user.image} alt={user.name}/>
+        <p>{user.bio}</p>
+        <h2>{renderDate}</h2>
+    </div>)
 }
 
 export default SideBar;
