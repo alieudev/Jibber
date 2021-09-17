@@ -2,7 +2,7 @@ import { useState } from "react"
 import PostDisplay from "./PostDisplay"
 import NewJibForm from "./NewJibForm"
 
-function PostsList({ posts, user, appOnDeletePost, appOnAddPost }) {
+function PostsList({ posts, user, appOnDeletePost, appOnAddPost, appOnEditPost }) {
 	const [listPosts, setListPosts] = useState(posts)
 
 	function onAddPost(data) {
@@ -17,7 +17,7 @@ function PostsList({ posts, user, appOnDeletePost, appOnAddPost }) {
 	}
 
 	const renderPosts = listPosts.map((post) => (
-    <PostDisplay post={post} key={post.id} user={user} onDeletePost={onDeletePost} />
+    <PostDisplay post={post} key={post.id} user={user} onDeletePost={onDeletePost} appOnEditPost={appOnEditPost} />
   ));	
 
 	return (

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import PostsList from "./PostsList";
 
-function UserDisplay({ users, user, posts, appOnDeletePost, appOnAddPost }) {
+function UserDisplay({ users, user, posts, appOnDeletePost, appOnAddPost, appOnEditPost }) {
   const params = useParams();
       
   const filteredUser = users.filter((user) => parseInt(user.id) === parseInt(params.id))[0]
@@ -22,7 +22,7 @@ function UserDisplay({ users, user, posts, appOnDeletePost, appOnAddPost }) {
         <p><b>Bio: </b>{filteredUser.bio}</p>
         <p><b>Member since: </b>{renderDate}</p>
         <h2>Posts</h2>
-        <PostsList posts={userPosts} user={user} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} />
+        <PostsList posts={userPosts} user={user} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
       </div>
     </div>
   );

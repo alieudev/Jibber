@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import EditForm from './EditForm'
 import { Button } from 'semantic-ui-react'
 
-function PostDisplay({ post, user, onDeletePost }) {
+function PostDisplay({ post, user, onDeletePost, appOnEditPost }) {
 	const [editClicked, setEditClicked] = useState(false)
 	const [errors, setErrors] = useState([])
 	const [renderPost, setRenderPost] = useState(post)
@@ -59,6 +59,7 @@ function PostDisplay({ post, user, onDeletePost }) {
                 post={renderPost}
                 updatePost={updatePost}
                 setEditClicked={setEditClicked}
+                appOnEditPost={appOnEditPost}
               />
             ) : null}
           </>

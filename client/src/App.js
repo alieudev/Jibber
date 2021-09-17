@@ -56,6 +56,11 @@ function App() {
     setPosts([data, ...posts])
   }
 
+  function appOnEditPost(data) {
+    let editedPostArr = posts.filter(post => parseInt(post.id) !== parseInt(data.id))
+    setPosts([data, ...editedPostArr])
+  }
+
   function updateUser(data) {
     setUser(data)
   }
@@ -71,14 +76,14 @@ function App() {
           <main>
             <Switch>
               <Route exact path ="/">
-                <PostsContainer user={user} posts={posts} setPosts={setPosts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} />
+                <PostsContainer user={user} posts={posts} setPosts={setPosts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
               </Route>
               <Route exact path ="/users">
                 <LinkUserData fetchUsers={fetchUsers} />
               </Route>
               <Redirect from="/x-users/:id" to="/users/:id" />
               <Route exact path="/users/:id">
-               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} />
+               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
               </Route>
               {/* <Route exact path="/signup">
                 <Signup/>

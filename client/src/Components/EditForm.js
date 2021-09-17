@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function EditForm({ post, updatePost, setEditClicked }) {
+function EditForm({ post, updatePost, setEditClicked, appOnEditPost }) {
   const [content, setContent] = useState(post.content);
 
   function handleEditContent(e) {
@@ -22,6 +22,7 @@ function EditForm({ post, updatePost, setEditClicked }) {
       .then((resp) => resp.json())
       .then((data) => {
 				updatePost(data)
+        appOnEditPost(data)
 				setEditClicked((prevState) => !prevState)
 			});
   }
