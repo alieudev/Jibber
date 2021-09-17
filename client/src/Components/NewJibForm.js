@@ -8,44 +8,46 @@ const TextAreaExampleTextArea = () => (
 )
 
 function NewJibForm({ user, onAddPost, setIsClicked }) {
-    const [content, setContent] = useState("");
+  const [content, setContent] = useState("");
 
-    function handleNewContent(e) {
-      e.preventDefault();
-      setContent(e.target.value);
-    }
+  function handleNewContent(e) {
+    e.preventDefault();
+    setContent(e.target.value);
+  }
+
+  function submitJib(e) {
+    e.preventDefault();
+    fetch('/posts', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content,
+      user_id: user.id
+      }),
+    })
+    .then((resp) => resp.json())
+    .then((data) => {
+      onAddPost(data)
+      setContent('')
+    });
+  }
   
-    function submitJib(e) {
-      e.preventDefault();
-      fetch('/posts', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            content,
-		    user_id: user.id
-        }),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-                  onAddPost(data)
-                  setContent('')
-              });
-    }
-    
-    return (
-        <>
-        <Form style={{'paddingLeft':15, 'width': '700px', 'paddingRight':15}} onSubmit={submitJib}>
-          <TextArea 
-            placeholder="What's happenning?"
-            value={content} 
-            name="content"
-            onChange={handleNewContent}/>
-          <Button floated="right" primary type='submit'>Jeeb</Button>
-        </Form>
-      </>
-    )
+  return (
+    <>
+      <Form style={{ 'width': '700px' }} onSubmit={submitJib}>
+        <TextArea 
+          placeholder="What's happenning?"
+          value={content} 
+          name="content"
+          onChange={handleNewContent}
+        />
+        <div style={{ height: 7 }} />
+        <Button floated="right" primary type='submit'>Jab</Button>
+      </Form>
+    </>
+  )
 }
 
 export default NewJibForm;

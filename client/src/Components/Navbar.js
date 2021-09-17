@@ -1,5 +1,6 @@
 import { Fragment } from "react"
-// import { Link } from "react.router.dom"
+import { Link } from 'react-router-dom'
+import JibberLogo from '../Images/JibberLogo.png'
 
 function Navbar({ onLogout, user }) {
   function handleLogout() {
@@ -9,14 +10,16 @@ function Navbar({ onLogout, user }) {
   }
 
   return (
-    <header style={{ backgroundColor: "Gainsboro", 'paddingTop':15, 'paddingBottom':15 }} >
+    <header style={{ backgroundColor: "Gainsboro", 'paddingTop':20, 'paddingBottom':20 }} >
 			<Fragment>
-				<span style={{ 'paddingRight':15, fontSize:30 }} ><b>Jibber</b></span>
-				{/* <img src="https://www.clipartmax.com/png/small/311-3112098_rofl-the-jabbering-jibberling-jumping-rofl-the-jabbering-jibberling-jumping.png" alt="Rofl The Jabbering Jibberling Jumping - Rofl The Jabbering Jibberling Jumping @clipartmax.com"> */}
+				<span style={{ 'paddingLeft':15, 'paddingRight':15, fontSize:30 }} ><b><Link to='/'>Jibber</Link></b></span>
 				{ user ? 
 					<Fragment>
-						<span style={{'paddingRight':15}}>Welcome, @{user.handle}</span>
-						<button onClick={handleLogout}>Logout</button>
+						<Link to="/users" style={{'paddingLeft':15, 'paddingRight':15}} >Users</Link>
+						<span style={{ float: "right", 'paddingRight':15 }} >
+							<span style={{'paddingLeft':15, 'paddingRight':15}}>Welcome, <Link to={`/users/${user.id}`} >@{user.handle}</Link></span>
+							<button onClick={handleLogout}>Logout</button>
+						</span>
 					</Fragment>
 				:
 					<span>Not Logged In</span> //<button>Login</button> MAKE THIS BUTTON A LINK TO LOGIN??

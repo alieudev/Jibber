@@ -35,33 +35,36 @@ function PostDisplay({ post, user, onDeletePost }) {
   const renderDate = `${splitDate[0]}, ${splitDate[1]} ${splitDate[2]}, ${splitDate[3]}`
 
 	return (
-    <div className="post-div" >
-        <img className='post-avatar' src={renderPost.user.image} alt={renderPost.user.name}/>
-      <main style={{ marginLeft: 70 }} >
-        <p>
-          <b>{renderPost.user.name}</b>
-        </p>
-        <p><Link to={`/users/${post.user.id}`}>@{renderPost.user.handle}</Link></p>
-        <p>{renderPost.content}</p>
-        <div>
-          <em>{renderDate}</em>
-        </div>
-      </main>
-	  
-      {renderPost.user.id === user.id ? (
-        <>
-          <Button basic color='blue' style={{'marginLeft': 70}}onClick={editButtonClick}>Edit</Button>
-          <Button basic color='red' onClick={handleDelete}>Delete</Button>
-          {errors ? errors.map((e) => <div>{e}</div>) : null}
-          {editClicked && !errors ? (
-            <EditForm
-              post={renderPost}
-              updatePost={updatePost}
-              setEditClicked={setEditClicked}
-            />
-          ) : null}
-        </>
-      ) : null}
+    <div className='p-container' >
+      <div className='post-div' >
+          <img className='post-avatar' src={renderPost.user.image} alt={renderPost.user.name}/>
+        <main style={{ marginLeft: 80 }} >
+          <div>
+            <b>{renderPost.user.name}</b>
+          </div>
+          <p><Link to={`/users/${post.user.id}`}>@{renderPost.user.handle}</Link></p>
+          <p>{renderPost.content}</p>
+          <div>
+            <em>{renderDate}</em>
+          </div>
+        </main>
+      
+        {renderPost.user.id === user.id ? (
+          <>
+            <Button basic color='blue' style={{'marginLeft': 70}}onClick={editButtonClick}>Edit</Button>
+            <Button basic color='red' onClick={handleDelete}>Delete</Button>
+            {errors ? errors.map((e) => <div>{e}</div>) : null}
+            {/* {editClicked && !errors ? ( */}
+            {editClicked ? (
+              <EditForm
+                post={renderPost}
+                updatePost={updatePost}
+                setEditClicked={setEditClicked}
+              />
+            ) : null}
+          </>
+        ) : null}
+      </div>
     </div>
   );
 }

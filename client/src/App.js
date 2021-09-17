@@ -40,7 +40,7 @@ function App() {
     <Fragment>
       <Navbar onLogout={onLogout} user={user} />
       {user && fetchUsers ? (
-        <Fragment>
+        <div className="main-div" >
           <aside>
             <SideBar user={user}></SideBar>
           </aside>
@@ -60,7 +60,7 @@ function App() {
               </Route> */}
             </Switch>
           </main>
-        </Fragment>
+        </div>
       ) : (
         <LoginContainer onLogin={onLogin} />
       )}
