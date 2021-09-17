@@ -1,16 +1,17 @@
 import { useState, useEffect, Fragment } from "react"
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import LoginContainer from './Components/LoginContainer'
 import PostsContainer from "./Components/PostsContainer"
 import Navbar from "./Components/Navbar"
 import SideBar from "./Components/SideBar"
 import UserDisplay from './Components/UserDisplay'
 import LinkUserData from './Components/LinkUserData'
-import Signup from "./Components/Signup";
+// import Signup from "./Components/Signup";
 
 function App() {
   const [user, setUser] = useState(null)
   const [fetchUsers, setFetchUsers] = useState(null)
+  const [posts, setPosts] = useState([])
 
   // CHECKS TO SEE IF A USER IS ALREADY LOGGED IN
   useEffect(() => {
@@ -28,12 +29,31 @@ function App() {
     .then((data)=> setFetchUsers(data))
   }, [])
 
+  // FETCHES ALL POSTS
+  	useEffect(() => {
+    fetch("/posts")
+    .then((r) => r.json())
+    .then((data) =>{ 
+      let newestFirst = data.sort((a, b) => b.id - a.id)
+      setPosts(newestFirst) 
+    })
+  },[])
+
   function onLogin(newUser) {
     setUser(newUser)
   }
 
   function onLogout() {
     setUser(null)
+  }
+
+  function appOnDeletePost(data) {
+    let newArr = posts.filter(post => post.id !== data)
+    setPosts(newArr)
+  }
+
+  function appOnAddPost(data) {
+    setPosts([data, ...posts])
   }
 
   return (
@@ -47,13 +67,14 @@ function App() {
           <main>
             <Switch>
               <Route exact path ="/">
-                <PostsContainer user={user} />{" "}
+                <PostsContainer user={user} posts={posts} setPosts={setPosts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} />
               </Route>
               <Route exact path ="/users">
                 <LinkUserData fetchUsers={fetchUsers} />
               </Route>
+              <Redirect from="/x-users/:id" to="/users/:id" />
               <Route exact path="/users/:id">
-               <UserDisplay users={fetchUsers} />
+               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} />
               </Route>
               {/* <Route exact path="/signup">
                 <Signup/>

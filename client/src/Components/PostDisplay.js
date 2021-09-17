@@ -17,7 +17,6 @@ function PostDisplay({ post, user, onDeletePost }) {
       .then((r) => r.json())
       .then((data) => {
         if (data.errors) setErrors(data.errors);
-        // else 
       });
 	}
 

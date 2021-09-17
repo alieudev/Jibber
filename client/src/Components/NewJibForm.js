@@ -7,7 +7,7 @@ const TextAreaExampleTextArea = () => (
   </Form>
 )
 
-function NewJibForm({ user, onAddPost, setIsClicked }) {
+function NewJibForm({ user, onAddPost }) {
   const [content, setContent] = useState("");
 
   function handleNewContent(e) {

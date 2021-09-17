@@ -1,24 +1,13 @@
-import { useState, useEffect, Fragment } from "react"
+import { useState, Fragment } from "react"
 import PostsList from "./PostsList"
 import NewJibForm from "./NewJibForm"
 
-function PostsContainer({ user }) {
-  const [posts, setPosts] = useState([])
-  const [isClicked, setIsClicked] = useState(false);
+function PostsContainer({ user, posts, setPosts, appOnDeletePost, appOnAddPost }) {
+  // const [postsList, setPostsList] = useState(posts)
 
-	useEffect(() => {
-    fetch("/posts")
-    .then((r) => r.json())
-    .then((data) =>{ 
-      setPosts(data) 
-    })
-  },[])
-
-  const onAddPost = (data) => setPosts([data, ...posts])
-
-  const onDeletePost = (data) => {
-    let filteredPosts = posts.filter(post => post.id !== data)
-    setPosts(filteredPosts)
+  function onAddPost(data) {
+    setPosts([data, ...posts])
+    // setPostsList([data, ...postsList])
   }
 	
   return (
@@ -29,14 +18,11 @@ function PostsContainer({ user }) {
           <div className='form-div' >
             <NewJibForm
               user={user}
-              onAddPost={onAddPost}
-              setIsClicked={setIsClicked}
+              onAddPost={appOnAddPost}
             />
           </div>
         </div>
-      {/* <br></br>
-      <br></br> */}
-        <PostsList posts={posts} user={user} onDeletePost={onDeletePost} />
+        <PostsList posts={posts} user={user} appOnDeletePost={appOnDeletePost} />
       </div>
       ) : (<h1>Loading...</h1>)}
     </Fragment>

@@ -1,6 +1,5 @@
 import { Fragment } from "react"
 import { Link } from 'react-router-dom'
-import JibberLogo from '../Images/JibberLogo.png'
 
 function Navbar({ onLogout, user }) {
   function handleLogout() {
@@ -17,7 +16,7 @@ function Navbar({ onLogout, user }) {
 					<Fragment>
 						<Link to="/users" style={{'paddingLeft':15, 'paddingRight':15}} >Users</Link>
 						<span style={{ float: "right", 'paddingRight':15 }} >
-							<span style={{'paddingLeft':15, 'paddingRight':15}}>Welcome, <Link to={`/users/${user.id}`} >@{user.handle}</Link></span>
+							<span style={{'paddingLeft':15, 'paddingRight':15}}>Welcome, <Link to={`/x-users/${user.id}`} >@{user.handle}</Link></span>
 							<button onClick={handleLogout}>Logout</button>
 						</span>
 					</Fragment>
