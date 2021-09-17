@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SideBar({ user, updateUser }){ 
+function SideBar({ user, updateUser, fetchingUsers }){ 
     const [isClicked, setIsClicked] = useState(false)
     const [bio, setBio] = useState(user.bio)
     const [image, setImage] = useState(user.image)
@@ -45,6 +45,7 @@ function SideBar({ user, updateUser }){
         .then((data) => {
 			// console.log(data)
 			updateUser(data)
+            fetchingUsers()
             setIsClicked(!isClicked)
         })
     }

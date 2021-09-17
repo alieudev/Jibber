@@ -17,31 +17,36 @@ function App() {
   useEffect(() => {
     fetch("/auth").then((res) => {
       if (res.ok) {
-        res.json().then((data) => setUser(data));
+        res.json().then((data) => {
+          setUser(data)
+            fetchingPosts()
+            fetchingUsers()
+        });
       }
     });
   }, []);
 
   // FETCHES ALL USERS
-  useEffect(() => {
+  function fetchingUsers(){
     fetch("/users")
     .then((res) => res.json())
     .then((data)=> setFetchUsers(data))
-  }, [user.bio, user.image])
+  }
 
-  console.log(user.bio)
   // FETCHES ALL POSTS
-  	useEffect(() => {
+  function fetchingPosts(){
     fetch("/posts")
     .then((r) => r.json())
     .then((data) =>{ 
       let newestFirst = data.sort((a, b) => b.id - a.id)
       setPosts(newestFirst) 
     })
-  },[])
+  }
 
   function onLogin(newUser) {
     setUser(newUser)
+    fetchingUsers()
+    fetchingPosts()
   }
 
   function onLogout() {
@@ -76,7 +81,7 @@ function App() {
       {user && fetchUsers ? (
         <div className="main-div" >
           <aside>
-            <SideBar user={user} updateUser={updateUser} ></SideBar>
+            <SideBar user={user} updateUser={updateUser} fetchingUsers={fetchingUsers}></SideBar>
           </aside>
           <main>
             <Switch>
