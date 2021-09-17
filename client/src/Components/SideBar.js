@@ -54,7 +54,7 @@ function SideBar({ user, updateUser, fetchingUsers }){
     <div className="main-div" >
         <h1>{user.name}</h1>
         <h2>@{user.handle}</h2>
-        <img src={user.image} alt={user.name}/>
+        <img src={user.image} alt={user.name} style={{ height: 300 }} />
         <p style={{ paddingTop: 10 }} ><b>Bio: </b>{user.bio}</p>
         <p>Joined on {renderDate}</p>
         <button onClick={handleEditClick}>Edit Profile</button>

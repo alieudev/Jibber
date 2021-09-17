@@ -18,7 +18,7 @@ function UserDisplay({ users, user, posts, appOnDeletePost, appOnAddPost, appOnE
     <div className="user-display-div" >
       <div>
         <h1>{`${filteredUser.name}`}</h1>
-        <img src={filteredUser.image} alt={filteredUser.name}/>
+        <img src={filteredUser.image} alt={filteredUser.name} style={{ height: 300 }} />
         <p><b>Bio: </b>{filteredUser.bio}</p>
         <p><b>Member since: </b>{renderDate}</p>
         <h2>Posts</h2>
