@@ -17,30 +17,36 @@ function App() {
   useEffect(() => {
     fetch("/auth").then((res) => {
       if (res.ok) {
-        res.json().then((data) => setUser(data));
+        res.json().then((data) => {
+          setUser(data)
+            fetchingPosts()
+            fetchingUsers()
+        });
       }
     });
   }, []);
 
   // FETCHES ALL USERS
-  useEffect(() => {
+  function fetchingUsers(){
     fetch("/users")
     .then((res) => res.json())
     .then((data)=> setFetchUsers(data))
-  }, [])
+  }
 
   // FETCHES ALL POSTS
-  	useEffect(() => {
+  function fetchingPosts(){
     fetch("/posts")
     .then((r) => r.json())
     .then((data) =>{ 
       let newestFirst = data.sort((a, b) => b.id - a.id)
       setPosts(newestFirst) 
     })
-  },[])
+  }
 
   function onLogin(newUser) {
     setUser(newUser)
+    fetchingUsers()
+    fetchingPosts()
   }
 
   function onLogout() {
@@ -65,13 +71,17 @@ function App() {
     setUser(data)
   }
 
+  // function componentDidMount(){
+  //   this.props.fetchAllUpdate();
+  // }
+
   return (
     <Fragment>
       <Navbar onLogout={onLogout} user={user} />
       {user && fetchUsers ? (
         <div className="main-div" >
           <aside>
-            <SideBar user={user} updateUser={updateUser} ></SideBar>
+            <SideBar user={user} updateUser={updateUser} fetchingUsers={fetchingUsers}></SideBar>
           </aside>
           <main>
             <Switch>
@@ -83,7 +93,14 @@ function App() {
               </Route>
               <Redirect from="/x-users/:id" to="/users/:id" />
               <Route exact path="/users/:id">
-               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
+               <UserDisplay 
+                users={fetchUsers} 
+                user={user} 
+                posts={posts} 
+                appOnDeletePost={appOnDeletePost} 
+                appOnAddPost={appOnAddPost} 
+                appOnEditPost={appOnEditPost} />
+                {/* fetchAllUpdates={this.fetchAllUpdate}/> */}
               </Route>
               {/* <Route exact path="/signup">
                 <Signup/>
