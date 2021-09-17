@@ -7,8 +7,8 @@ require 'bcrypt'
 	email = Faker::Internet.email
 	image = Faker::Avatar.image
 	bio = Faker::Lorem.paragraph
-	password_digest = ""
-	User.create!(name: name, handle: handle, email: email, image: image, bio: bio, password_digest: BCrypt::Password.create('password'))
+	password = "password"
+	User.create!(name: name, handle: handle, email: email, image: image, bio: bio, password: password)
 end
 
 40.times do
