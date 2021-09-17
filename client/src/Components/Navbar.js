@@ -21,7 +21,7 @@ function Navbar({ onLogout, user }) {
 						</span>
 					</Fragment>
 				:
-					<span>Not Logged In</span> //<button>Login</button> MAKE THIS BUTTON A LINK TO LOGIN??
+					null
 				}
 			</Fragment>
     </header>

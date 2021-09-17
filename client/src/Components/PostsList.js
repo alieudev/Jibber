@@ -1,8 +1,14 @@
 import { useState } from "react"
 import PostDisplay from "./PostDisplay"
+import NewJibForm from "./NewJibForm"
 
-function PostsList({ posts, user, appOnDeletePost }) {
+function PostsList({ posts, user, appOnDeletePost, appOnAddPost }) {
 	const [listPosts, setListPosts] = useState(posts)
+
+	function onAddPost(data) {
+		appOnAddPost(data)
+		setListPosts([data, ...listPosts])
+	}
 
 	const onDeletePost = (data) => {
 		let filteredPosts = listPosts.filter(post => post.id !== data)
@@ -16,6 +22,15 @@ function PostsList({ posts, user, appOnDeletePost }) {
 
 	return (
 		<div>
+			        <div className='p-container' >
+          <div className='form-div' >
+            <NewJibForm
+              user={user}
+              onAddPost={onAddPost}
+            />
+          </div>
+        </div>
+
 			{renderPosts}
 		</div>
 	)

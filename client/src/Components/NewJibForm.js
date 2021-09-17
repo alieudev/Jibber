@@ -1,11 +1,11 @@
 import {useState} from 'react'
 import { Form, TextArea, Button } from 'semantic-ui-react'
 
-const TextAreaExampleTextArea = () => (
-  <Form>
-    <TextArea placeholder='Tell us more' />
-  </Form>
-)
+// const TextAreaExampleTextArea = () => (
+//   <Form>
+//     <TextArea placeholder='Tell us more' />
+//   </Form>
+// )
 
 function NewJibForm({ user, onAddPost }) {
   const [content, setContent] = useState("");

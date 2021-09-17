@@ -74,7 +74,7 @@ function App() {
               </Route>
               <Redirect from="/x-users/:id" to="/users/:id" />
               <Route exact path="/users/:id">
-               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} />
+               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} />
               </Route>
               {/* <Route exact path="/signup">
                 <Signup/>
