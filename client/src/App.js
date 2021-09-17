@@ -27,8 +27,9 @@ function App() {
     fetch("/users")
     .then((res) => res.json())
     .then((data)=> setFetchUsers(data))
-  }, [])
+  }, [user.bio, user.image])
 
+  console.log(user.bio)
   // FETCHES ALL POSTS
   	useEffect(() => {
     fetch("/posts")
@@ -65,7 +66,9 @@ function App() {
     setUser(data)
   }
 
-  console.log(user)
+  // function componentDidMount(){
+  //   this.props.fetchAllUpdate();
+  // }
 
   return (
     <Fragment>
@@ -85,7 +88,14 @@ function App() {
               </Route>
               <Redirect from="/x-users/:id" to="/users/:id" />
               <Route exact path="/users/:id">
-               <UserDisplay users={fetchUsers} user={user} posts={posts} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
+               <UserDisplay 
+                users={fetchUsers} 
+                user={user} 
+                posts={posts} 
+                appOnDeletePost={appOnDeletePost} 
+                appOnAddPost={appOnAddPost} 
+                appOnEditPost={appOnEditPost} />
+                {/* fetchAllUpdates={this.fetchAllUpdate}/> */}
               </Route>
               {/* <Route exact path="/signup">
                 <Signup/>
