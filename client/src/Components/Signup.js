@@ -3,7 +3,8 @@ import { useState, Fragment } from "react"
 function Signup({ onLogin }) {
   const [name, setName] = useState("");
   const [handle, setHandle] = useState("");
-	const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("")
+  const [image, setImage] = useState("")
   const [errors, setErrors] = useState([])
 
   function handleSubmit(e) {
@@ -16,7 +17,8 @@ function Signup({ onLogin }) {
       body: JSON.stringify({
         name, 
 				handle,
-				password
+				password, 
+				image
 			}),
     })
       .then((r) => r.json())
@@ -46,10 +48,17 @@ function Signup({ onLogin }) {
 				/>
 				<br />
 				<input
-					type="text"
+					type="password"
 					value={password}
 					placeholder={"password"}
 					onChange={(e) => setPassword(e.target.value)}
+				/>
+				<br />
+				<input
+					type="text"
+					value={image}
+					placeholder={"image"}
+					onChange={(e) => setImage(e.target.value)}
 				/>
 				<br />
 				<button type="submit">Signup</button>

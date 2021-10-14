@@ -5,7 +5,7 @@ function PostsContainer({ user, posts, appOnDeletePost, appOnAddPost, appOnEditP
 
   return (
     <Fragment>
-      { posts.length > 0 ? (
+      { posts && posts.length > 0 ? (
       <div>
         <PostsList posts={posts} user={user} appOnDeletePost={appOnDeletePost} appOnAddPost={appOnAddPost} appOnEditPost={appOnEditPost} />
       </div>

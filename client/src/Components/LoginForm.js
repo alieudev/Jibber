@@ -93,7 +93,7 @@ function LoginForm ({ onLogin, onHandleClick }){
 				/>
 				<br />
 				<input
-					type="text"
+					type="password"
 					value={password}
 					placeholder={"password"}
 					onChange={(e) => setPassword(e.target.value)}

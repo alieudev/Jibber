@@ -34,8 +34,11 @@ function App() {
     fetch("/posts")
     .then((r) => r.json())
     .then((data) =>{ 
-      let newestFirst = data.sort((a, b) => b.id - a.id)
-      setPosts(newestFirst) 
+      // if (data.ok) {
+      //   let newestFirst = data.sort((a, b) => b.id - a.id)
+        setPosts(data) 
+      //}
+
     })
   },[])
 
@@ -65,6 +68,7 @@ function App() {
     setUser(data)
   }
 
+  console.log(posts)
   return (
     <Fragment>
       <Navbar onLogout={onLogout} user={user} />

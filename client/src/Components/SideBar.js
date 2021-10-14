@@ -43,7 +43,7 @@ function SideBar({ user, updateUser }){
     <div className="main-div" >
         <h1>{user.name}</h1>
         <h2>@{user.handle}</h2>
-        <img src={user.image} alt={user.name}/>
+        <img src={user.image} style={{heigh:"400px", width:"100px"}}alt={user.name}/>
         <p style={{ paddingTop: 10 }} ><b>Bio: </b>{user.bio}</p>
         <p>Joined on {renderDate}</p>
         {/* <h2>Edit Profile</h2>
